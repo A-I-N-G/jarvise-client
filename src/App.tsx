@@ -7,6 +7,7 @@ import Router from "./Router";
 const Screen = styled.div`
   display: flex;
   height: 100vh;
+  background-color: #f5f6fa;
 `;
 
 function App() {
