@@ -11,10 +11,11 @@ const SideBarDiv = styled.div`
 const SideBar = () => {
   return (
     <SideBarDiv>
-      <Menu text="채용 공고" />
-      <Menu text="자기소개서" />
-      <Menu text="결과" />
-      <Menu text="채용 등록" />
+      <Menu text="홈" linkUrl="/" />
+      <Menu text="채용 공고" linkUrl="/hire" />
+      <Menu text="자기소개서" linkUrl="/resume" />
+      <Menu text="결과" linkUrl="/result" />
+      <Menu text="채용 등록" linkUrl="/register" />
     </SideBarDiv>
   );
 };
