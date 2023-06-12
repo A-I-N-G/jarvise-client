@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Wrapper from "../components/Wrapper";
-import Card from "../components/Card";
+import HireCard from "../components/HireCard";
 
 const ContentBox = styled.div`
   display: flex;
@@ -23,18 +23,18 @@ const Hire = () => {
   return (
     <Wrapper>
       <ContentBox>
-        <Card
+        <HireCard
           title="직무명"
           keyword="키워드"
           intro="직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개직무소개"
         />
-        <Card title="직무명" keyword="키워드" intro="직무소개" />
-        <Card title="직무명" keyword="키워드" intro="직무소개" />
-        <Card title="직무명" keyword="키워드" intro="직무소개" />
-        <Card title="직무명" keyword="키워드" intro="직무소개" />
-        <Card title="직무명" keyword="키워드" intro="직무소개" />
-        <Card title="직무명" keyword="키워드" intro="직무소개" />
-        <Card title="직무명" keyword="키워드" intro="직무소개" />
+        <HireCard title="직무명" keyword="키워드" intro="직무소개" />
+        <HireCard title="직무명" keyword="키워드" intro="직무소개" />
+        <HireCard title="직무명" keyword="키워드" intro="직무소개" />
+        <HireCard title="직무명" keyword="키워드" intro="직무소개" />
+        <HireCard title="직무명" keyword="키워드" intro="직무소개" />
+        <HireCard title="직무명" keyword="키워드" intro="직무소개" />
+        <HireCard title="직무명" keyword="키워드" intro="직무소개" />
       </ContentBox>
     </Wrapper>
   );
