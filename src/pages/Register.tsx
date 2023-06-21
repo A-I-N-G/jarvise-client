@@ -2,6 +2,7 @@ import Wrapper from "../components/Wrapper";
 import styled from "styled-components";
 import InputBox from "../components/InputBox";
 import { useState } from "react";
+import KeyWordBox from "../components/KeyWordBox";
 
 const ContentBox = styled.div`
   display: flex;
@@ -27,12 +28,39 @@ const Box = styled.div`
   height: 100%;
   padding: 30px 50px;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   overflow-y: scroll;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera*/
   }
+`;
+
+const ContentDiv = styled.div`
+  height: 100%;
+  width: 100%;
+  position: relative;
+  margin-bottom: 20px;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
+`;
+
+const SubmitBtn = styled.button`
+  width: 100px;
+  border: none;
+  cursor: pointer;
+  background-color: #0acf97;
+  color: white;
+  margin-left: 10px;
+  padding: 10px 20px;
+  border-radius: 10px;
 `;
 
 const Register = () => {
@@ -43,18 +71,22 @@ const Register = () => {
     <Wrapper>
       <ContentBox>
         <Box>
-          <InputBox
-            type="text"
-            label="직무명"
-            value={jobName}
-            setValue={setJobName}
-          />
-          <InputBox
-            type="textarea"
-            label="직무 소개"
-            value={jobIntro}
-            setValue={setJobIntro}
-          />
+          <ContentDiv>
+            <InputBox
+              type="text"
+              label="직무명"
+              value={jobName}
+              setValue={setJobName}
+            />
+            <KeyWordBox />
+            <InputBox
+              type="textarea"
+              label="직무 소개"
+              value={jobIntro}
+              setValue={setJobIntro}
+            />
+          </ContentDiv>
+          <SubmitBtn>제출</SubmitBtn>
         </Box>
       </ContentBox>
     </Wrapper>
