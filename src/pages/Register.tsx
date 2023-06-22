@@ -3,6 +3,7 @@ import styled from "styled-components";
 import InputBox from "../components/InputBox";
 import { useState } from "react";
 import KeyWordBox from "../components/KeyWordBox";
+import QuestionBox from "../components/QuestionBox";
 
 const ContentBox = styled.div`
   display: flex;
@@ -85,6 +86,7 @@ const Register = () => {
               value={jobIntro}
               setValue={setJobIntro}
             />
+            <QuestionBox />
           </ContentDiv>
           <SubmitBtn>제출</SubmitBtn>
         </Box>
