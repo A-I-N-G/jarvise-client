@@ -9,6 +9,12 @@ const Question = styled.textarea`
   width: 100%;
   padding: 10px 20px;
   margin-bottom: 5px;
+  resize: none;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  &::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+  }
 `;
 
 const QuestionInput = () => {
