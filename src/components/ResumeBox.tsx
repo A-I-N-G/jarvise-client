@@ -1,4 +1,4 @@
-import { Dispatch, MouseEvent, SetStateAction } from "react";
+import { MouseEvent } from "react";
 import styled from "styled-components";
 import BigCard from "./BigCard";
 
