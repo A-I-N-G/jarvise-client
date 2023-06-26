@@ -1,7 +1,7 @@
 import Wrapper from "../components/Wrapper";
 import styled from "styled-components";
 import InputBox from "../components/InputBox";
-import { useState } from "react";
+import { useState, MouseEvent } from "react";
 import KeyWordBox from "../components/KeyWordBox";
 import QuestionBox from "../components/QuestionBox";
 
@@ -68,6 +68,10 @@ const Register = () => {
   const [jobName, setJobName] = useState("");
   const [jobIntro, setJobIntro] = useState("");
 
+  const onSubmit = (e: MouseEvent<HTMLButtonElement>) => {
+    console.log("submit");
+  };
+
   return (
     <Wrapper>
       <ContentBox>
@@ -88,7 +92,7 @@ const Register = () => {
             />
             <QuestionBox />
           </ContentDiv>
-          <SubmitBtn>제출</SubmitBtn>
+          <SubmitBtn onClick={onSubmit}>제출</SubmitBtn>
         </Box>
       </ContentBox>
     </Wrapper>
