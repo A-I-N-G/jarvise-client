@@ -4,6 +4,7 @@ import InputBox from "../components/InputBox";
 import { useState, MouseEvent } from "react";
 import KeyWordBox from "../components/KeyWordBox";
 import QuestionBox from "../components/QuestionBox";
+import { insertEmployment, test } from "../axios/recruit";
 
 const ContentBox = styled.div`
   display: flex;
@@ -68,8 +69,16 @@ const Register = () => {
   const [jobName, setJobName] = useState("");
   const [jobIntro, setJobIntro] = useState("");
 
-  const onSubmit = (e: MouseEvent<HTMLButtonElement>) => {
-    console.log("submit");
+  const onClick = (e: MouseEvent<HTMLButtonElement>) => {
+    const params = {
+      companyId: 1,
+      positionId: 1,
+      positionName: "test",
+      keywordList: ["key1", "key2", "key3"],
+      introduction: "test intro",
+      itemList: ["item1", "item2", "item3"],
+    };
+    test(params);
   };
 
   return (
@@ -92,7 +101,7 @@ const Register = () => {
             />
             <QuestionBox />
           </ContentDiv>
-          <SubmitBtn onClick={onSubmit}>제출</SubmitBtn>
+          <SubmitBtn onClick={onClick}>등록</SubmitBtn>
         </Box>
       </ContentBox>
     </Wrapper>
