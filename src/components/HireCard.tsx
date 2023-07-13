@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Box = styled.div`
   background-color: #fff;
@@ -53,14 +54,21 @@ const ApplyBtn = styled.button`
 `;
 
 interface CardProps {
+  id: number;
   title: string;
   keyword: string;
   intro: string;
 }
 
-const Card = ({ title, keyword, intro }: CardProps) => {
+const Card = ({ id, title, keyword, intro }: CardProps) => {
+  const navigate = useNavigate();
+
   const getShortStr = (content: string) =>
     content.length > 150 ? `${content.slice(0, 150)}...` : content;
+
+  const onClick = () => {
+    navigate(`/resume/${id}`);
+  };
   return (
     <Box>
       <ContentDiv>
@@ -77,7 +85,7 @@ const Card = ({ title, keyword, intro }: CardProps) => {
           <Content>{getShortStr(intro)}</Content>
         </ContentBox>
       </ContentDiv>
-      <ApplyBtn>지원하기</ApplyBtn>
+      <ApplyBtn onClick={onClick}>지원하기</ApplyBtn>
     </Box>
   );
 };

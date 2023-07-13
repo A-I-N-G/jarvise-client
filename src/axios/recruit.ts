@@ -28,13 +28,10 @@ export const registerEmployment = async (params: Params) => {
   }
 };
 
-export const test = async (params: Params) => {
+export const getEmployment = async () => {
   try {
-    await axios.post(`${BASE_URL}/applicants`, {
-      name: "김혜민",
-      birthday: "2023.06.29",
-      gender: "FEMALE",
-    });
+    const { data } = await axios.get(`${BASE_URL}/positions`);
+    return data;
   } catch (e) {
     alert(e);
   }
