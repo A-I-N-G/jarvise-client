@@ -4,7 +4,7 @@ import InputBox from "../components/InputBox";
 import { useState, MouseEvent } from "react";
 import KeyWordBox from "../components/KeyWordBox";
 import QuestionBox from "../components/QuestionBox";
-import { insertEmployment, test } from "../axios/recruit";
+import { registerEmployment } from "../axios/recruit";
 
 const ContentBox = styled.div`
   display: flex;
@@ -68,19 +68,26 @@ const SubmitBtn = styled.button`
 const Register = () => {
   const [jobName, setJobName] = useState("");
   const [jobIntro, setJobIntro] = useState("");
+  const [keywords, setKeywords] = useState<string[]>([]);
+  const [questions, setQuestions] = useState<string[]>([]);
 
   const onClick = (e: MouseEvent<HTMLButtonElement>) => {
     const params = {
-      companyId: 1,
-      positionId: 1,
-      positionName: "test",
-      keywordList: ["key1", "key2", "key3"],
-      introduction: "test intro",
-      itemList: ["item1", "item2", "item3"],
+      companyDto: {
+        id: 1,
+        name: "현대IT&E",
+      },
+      itemList: questions,
+      keywordList: keywords,
+      positionDto: {
+        id: 1,
+        introduction: jobIntro,
+        name: jobName,
+      },
     };
-    test(params);
+    console.log(params);
+    // registerEmployment(params);
   };
-
   return (
     <Wrapper>
       <ContentBox>
@@ -92,14 +99,14 @@ const Register = () => {
               value={jobName}
               setValue={setJobName}
             />
-            <KeyWordBox />
+            <KeyWordBox setKeywords={setKeywords} />
             <InputBox
               type="textarea"
               label="직무 소개"
               value={jobIntro}
               setValue={setJobIntro}
             />
-            <QuestionBox />
+            <QuestionBox setQuestions={setQuestions} />
           </ContentDiv>
           <SubmitBtn onClick={onClick}>등록</SubmitBtn>
         </Box>

@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { useState, ChangeEvent } from "react";
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
+import { KeyWords } from "./KeyWordBox";
 
 const Keyword = styled.input`
   border: none;
@@ -11,14 +12,23 @@ const Keyword = styled.input`
   margin-bottom: 5px;
 `;
 
-const KeyWordInput = () => {
-  const [value, setValue] = useState("");
+interface KeyWordBoxProps {
+  id: number;
+  value: string;
+  setKewordList: Dispatch<SetStateAction<KeyWords[]>>;
+}
 
+const KeyWordInput = ({ id, value, setKewordList }: KeyWordBoxProps) => {
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
     const {
       target: { value },
     } = e;
-    setValue(value);
+
+    setKewordList((prev) => {
+      const temp = [...prev];
+      temp[id].value = value;
+      return temp;
+    });
   };
   return <Keyword value={value} onChange={onChange} />;
 };

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { MouseEvent } from "react";
+import { Dispatch, SetStateAction, useState, useEffect } from "react";
 import KeyWordInput from "./KeywordInput";
 
 const Box = styled.div`
@@ -28,20 +28,45 @@ const AddBtn = styled.button`
   border-radius: 5px;
 `;
 
-const KeyWordBox = () => {
-  const onClick = (e: MouseEvent<HTMLButtonElement>) => {
-    const {
-      currentTarget: { parentNode },
-    } = e;
-    if (!parentNode) return;
-    const newNode = parentNode.childNodes[0].cloneNode();
-    parentNode?.insertBefore(newNode, e.currentTarget);
+interface KeyWordBoxProps {
+  setKeywords: Dispatch<SetStateAction<string[]>>;
+}
+
+export interface KeyWords {
+  id: number;
+  value: string;
+}
+
+const KeyWordBox = ({ setKeywords }: KeyWordBoxProps) => {
+  const [keywordList, setKewordList] = useState<KeyWords[]>([
+    { id: 0, value: "" },
+  ]);
+
+  useEffect(() => {
+    const keywords: string[] = [];
+    keywordList.forEach(({ value }) => {
+      keywords.push(value);
+    });
+    setKeywords(keywords);
+  }, [keywordList]);
+
+  const onClick = () => {
+    const temp: KeyWords = { id: 0, value: "" };
+    temp["id"] = keywordList.length;
+    setKewordList((prev) => {
+      const newList = [...prev];
+      newList.push(temp);
+      return newList;
+    });
   };
+
   return (
     <Box>
       <Label>키워드</Label>
       <SmallBox>
-        <KeyWordInput />
+        {keywordList.map(({ id, value }) => (
+          <KeyWordInput id={id} value={value} setKewordList={setKewordList} />
+        ))}
         <AddBtn onClick={onClick}>+</AddBtn>
       </SmallBox>
     </Box>

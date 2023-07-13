@@ -1,19 +1,28 @@
 import axios from "axios";
 
-interface Params {
-  companyId: number;
-  positionId: number;
-  positionName: string;
-  keywordList: string[];
+interface CompanyDto {
+  id: number;
+  name: string;
+}
+
+interface positionDto {
+  id: number;
+  name: string;
   introduction: string;
+}
+
+interface Params {
+  companyDto: CompanyDto;
+  positionDto: positionDto;
+  keywordList: string[];
   itemList?: string[];
 }
 
 export const BASE_URL = "http://localhost:8080";
 
-export const insertEmployment = async (params: Params) => {
+export const registerEmployment = async (params: Params) => {
   try {
-    await axios.post(`${BASE_URL}/saveRecruit`, params);
+    await axios.post(`${BASE_URL}/job-postings`, params);
   } catch (e) {
     alert(e);
   }
