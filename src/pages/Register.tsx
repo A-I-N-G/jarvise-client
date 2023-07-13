@@ -71,7 +71,7 @@ const Register = () => {
   const [keywords, setKeywords] = useState<string[]>([]);
   const [questions, setQuestions] = useState<string[]>([]);
 
-  const onClick = (e: MouseEvent<HTMLButtonElement>) => {
+  const onClick = async (e: MouseEvent<HTMLButtonElement>) => {
     const params = {
       companyDto: {
         id: 1,
@@ -85,8 +85,9 @@ const Register = () => {
         name: jobName,
       },
     };
-    console.log(params);
-    // registerEmployment(params);
+
+    await registerEmployment(params);
+    alert("채용 공고가 등록되었습니다.");
   };
   return (
     <Wrapper>
