@@ -1,4 +1,5 @@
-import { MouseEvent, useState } from "react";
+import { MouseEvent, useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import ResumeBox from "../components/ResumeBox";
 import Wrapper from "../components/Wrapper";
 
@@ -22,7 +23,13 @@ const mock = [
 ];
 
 const Resume = () => {
+  const { id } = useParams();
+
   const [selectedIdx, setSelectedIdx] = useState(0);
+
+  useEffect(() => {
+    // itemList 가져오는 request
+  }, []);
 
   const onClick = (e: MouseEvent<HTMLButtonElement>) => {
     const {
