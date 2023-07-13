@@ -8,23 +8,37 @@ const mock = [
     title:
       "현대백화점그룹이 지향하는 4가지 실천가치(열정/소통/창의/파트너십 중 택1)와 부합하는 본인의 강점과 경험을 기술하여 주십시오.",
     id: 1,
+    value: "",
   },
   {
     title:
       "본인이 지원하는 직무에 있어 다른 지원자와는 차별화된 역량 및 그와 관련된 경험 혹은 경력을 기술하여 주십시오.",
     id: 2,
+    value: "",
   },
   {
     title:
       "기존과 다른 새로운 변화를 시도했던 경험과 그를 통해 배운 점이 무엇인지 기술하여 주십시오.",
     id: 3,
+    value: "",
   },
-  { title: "당사 지원동기와 입사 후 포부를 기술하여 주십시오.", id: 4 },
+  {
+    title: "당사 지원동기와 입사 후 포부를 기술하여 주십시오.",
+    id: 4,
+    value: "",
+  },
 ];
+
+export interface Question {
+  title: string;
+  id: number;
+  value: string;
+}
 
 const Resume = () => {
   const { id } = useParams();
 
+  const [questions, setQuestions] = useState<Question[]>(mock);
   const [selectedIdx, setSelectedIdx] = useState(0);
 
   useEffect(() => {
@@ -41,6 +55,7 @@ const Resume = () => {
         else setSelectedIdx((prev) => prev - 1);
         break;
       case "next":
+        console.log(questions);
         if (mock.length === selectedIdx + 1) alert("제출 완료");
         else setSelectedIdx((prev) => prev + 1);
         break;
@@ -49,15 +64,17 @@ const Resume = () => {
 
   return (
     <Wrapper>
-      {mock.map(({ title, id }, idx) => {
+      {questions.map(({ title, id, value }, idx) => {
         if (idx !== selectedIdx) return null;
         return (
           <ResumeBox
             title={title}
             id={id}
+            value={value}
             selectedIdx={selectedIdx}
             onClick={onClick}
             totalCnt={mock.length}
+            setQuestions={setQuestions}
           />
         );
       })}

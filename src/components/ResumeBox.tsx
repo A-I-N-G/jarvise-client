@@ -1,5 +1,6 @@
-import { MouseEvent } from "react";
+import { MouseEvent, ChangeEvent, Dispatch, SetStateAction } from "react";
 import styled from "styled-components";
+import { Question } from "../pages/Resume";
 import BigCard from "./BigCard";
 
 const ContentBox = styled.div`
@@ -81,24 +82,39 @@ const NextBtn = styled.button`
 interface ResumeBoxProps {
   title: string;
   id: number;
+  value: string;
   totalCnt: number;
   selectedIdx: number;
   onClick: (e: MouseEvent<HTMLButtonElement>) => void;
+  setQuestions: Dispatch<SetStateAction<Question[]>>;
 }
 
 const ResumeBox = ({
   title,
   id,
+  value,
   totalCnt,
   selectedIdx,
   onClick,
+  setQuestions,
 }: ResumeBoxProps) => {
+  const onChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    const {
+      target: { value },
+    } = e;
+    setQuestions((prev) => {
+      const newList = [...prev];
+      newList[id - 1].value = value;
+      return newList;
+    });
+  };
+
   return (
     <ContentBox key={id}>
       <BigCard>
         <ContentDiv>
           <Title>{title}</Title>
-          <Content value="자소서 내용" />
+          <Content value={value} onChange={onChange} />
         </ContentDiv>
         <div>
           {selectedIdx !== 0 && (
