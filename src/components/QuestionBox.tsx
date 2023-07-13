@@ -1,7 +1,13 @@
 import styled from "styled-components";
-import { MouseEvent } from "react";
-import KeyWordInput from "./KeywordInput";
+import {
+  Dispatch,
+  SetStateAction,
+  MouseEvent,
+  useState,
+  useEffect,
+} from "react";
 import QuestionInput from "./QuestionInputs";
+import { KeyWords } from "./KeyWordBox";
 
 const Box = styled.div`
   margin-bottom: 30px;
@@ -34,20 +40,44 @@ const AddBtn = styled.button`
   border-radius: 5px;
 `;
 
-const QuestionBox = () => {
-  const onClick = (e: MouseEvent<HTMLButtonElement>) => {
-    const {
-      currentTarget: { parentNode },
-    } = e;
-    if (!parentNode) return;
-    const newNode = parentNode.childNodes[0].cloneNode();
-    parentNode?.insertBefore(newNode, e.currentTarget);
+interface QuestionBoxProps {
+  setQuestions: Dispatch<SetStateAction<string[]>>;
+}
+
+const QuestionBox = ({ setQuestions }: QuestionBoxProps) => {
+  const [questionList, setQuestionList] = useState<KeyWords[]>([
+    { id: 0, value: "" },
+  ]);
+
+  useEffect(() => {
+    const questions: string[] = [];
+    questionList.forEach(({ value }) => {
+      questions.push(value);
+    });
+    setQuestions(questions);
+  }, [questionList]);
+
+  const onClick = () => {
+    const temp: KeyWords = { id: 0, value: "" };
+    temp["id"] = questionList.length;
+    setQuestionList((prev) => {
+      const newList = [...prev];
+      newList.push(temp);
+      return newList;
+    });
   };
+
   return (
     <Box>
       <Label>질문</Label>
       <SmallBox>
-        <QuestionInput />
+        {questionList.map(({ id, value }) => (
+          <QuestionInput
+            id={id}
+            value={value}
+            setQuestionList={setQuestionList}
+          />
+        ))}
         <AddBtn onClick={onClick}>+</AddBtn>
       </SmallBox>
     </Box>

@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { useState, ChangeEvent } from "react";
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
+import { KeyWords } from "./KeyWordBox";
 
 const Question = styled.textarea`
   border: none;
@@ -17,15 +18,25 @@ const Question = styled.textarea`
   }
 `;
 
-const QuestionInput = () => {
-  const [value, setValue] = useState("");
+interface QuestionBoxProps {
+  id: number;
+  value: string;
+  setQuestionList: Dispatch<SetStateAction<KeyWords[]>>;
+}
 
+const QuestionInput = ({ id, value, setQuestionList }: QuestionBoxProps) => {
   const onChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const {
       target: { value },
     } = e;
-    setValue(value);
+
+    setQuestionList((prev) => {
+      const temp = [...prev];
+      temp[id].value = value;
+      return temp;
+    });
   };
+
   return <Question value={value} onChange={onChange} />;
 };
 
