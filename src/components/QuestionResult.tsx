@@ -15,8 +15,48 @@ const ContentDiv = styled.div`
   }
 `;
 
+const ContentBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 30px;
+`;
+
+const Title = styled.div`
+  width: 15%;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #f1b618;
+`;
+
+const Content = styled.div`
+  width: 85%;
+`;
+
 const QuestionResult = () => {
-  return <ContentDiv>QuestionResult</ContentDiv>;
+  return (
+    <ContentDiv>
+      <ContentBox>
+        <Title>질문1</Title>
+        <Content>
+          ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+        </Content>
+      </ContentBox>
+      <ContentBox>
+        <Title>질문2</Title>
+        <Content>
+          ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+        </Content>
+      </ContentBox>
+      <ContentBox>
+        <Title>질문3</Title>
+        <Content>
+          ㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁ
+        </Content>
+      </ContentBox>
+    </ContentDiv>
+  );
 };
 
 export default QuestionResult;
