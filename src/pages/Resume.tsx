@@ -53,6 +53,7 @@ const Resume = () => {
           <ResumeBox
             title={content}
             id={id}
+            idx={idx}
             value={value}
             selectedIdx={selectedIdx}
             onClick={onClick}

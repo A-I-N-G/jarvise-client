@@ -31,13 +31,13 @@ const Title = styled.div`
 
 const ContentStrength = styled.div`
   font-weight: 600;
-  width: 85%;
+  width: 100%;
   color: #8b93f7;
 `;
 
 const ContentWeakness = styled.div`
   font-weight: 600;
-  width: 85%;
+  width: 100%;
   color: #fa6986;
 `;
 

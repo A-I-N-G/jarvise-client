@@ -82,6 +82,7 @@ const NextBtn = styled.button`
 interface ResumeBoxProps {
   title: string;
   id: number;
+  idx: number;
   value: string;
   totalCnt: number;
   selectedIdx: number;
@@ -92,6 +93,7 @@ interface ResumeBoxProps {
 const ResumeBox = ({
   title,
   id,
+  idx,
   value,
   totalCnt,
   selectedIdx,
@@ -105,7 +107,7 @@ const ResumeBox = ({
     setQuestions((prev) => {
       if (!prev) return;
       const newList = [...prev];
-      newList[id - 1].value = value;
+      newList[idx].value = value;
       return newList;
     });
   };
