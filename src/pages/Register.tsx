@@ -5,6 +5,7 @@ import { useState, MouseEvent } from "react";
 import KeyWordBox from "../components/KeyWordBox";
 import QuestionBox from "../components/QuestionBox";
 import { registerEmployment } from "../axios/recruit";
+import { useNavigate } from "react-router-dom";
 
 const ContentBox = styled.div`
   display: flex;
@@ -66,6 +67,8 @@ const SubmitBtn = styled.button`
 `;
 
 const Register = () => {
+  const navigate = useNavigate();
+
   const [jobName, setJobName] = useState("");
   const [jobIntro, setJobIntro] = useState("");
   const [keywords, setKeywords] = useState<string[]>([]);
@@ -88,6 +91,7 @@ const Register = () => {
 
     await registerEmployment(params);
     alert("채용 공고가 등록되었습니다.");
+    navigate("/hire");
   };
   return (
     <Wrapper>
