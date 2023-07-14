@@ -28,16 +28,16 @@ const ContentDiv = styled.div`
 
 const GraphResult = () => {
   const data = [
-    { keyword: "열정", key: 10 },
-    { keyword: "끈기", key: 8 },
-    { keyword: "협동력", key: 7 },
     { keyword: "도전", key: 9 },
-    { keyword: "창의", key: 9 },
+    { keyword: "열정", key: 10 },
+    { keyword: "소통", key: 7 },
+    { keyword: "창의", key: 8 },
+    { keyword: "파트너십", key: 6 },
   ];
 
   return (
     <ContentDiv>
-      <RadarChart data={data} width={300} height={300}>
+      <RadarChart data={data} width={500} height={300}>
         <PolarGrid />
         <PolarRadiusAxis angle={30} domain={[0, 10]} />
         <PolarAngleAxis dataKey="keyword" />
@@ -47,9 +47,7 @@ const GraphResult = () => {
           stroke="#8884d8"
           fill="#8884d8"
           fillOpacity={0.6}
-        >
-          <LabelList dataKey="key" />
-        </Radar>
+        ></Radar>
       </RadarChart>
     </ContentDiv>
   );
