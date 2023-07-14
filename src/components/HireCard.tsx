@@ -41,6 +41,7 @@ const ContentDiv = styled.div`
 
 const Content = styled.div`
   width: 80%;
+  white-space: pre-wrap;
 `;
 
 const ApplyBtn = styled.button`
