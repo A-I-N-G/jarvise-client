@@ -4,7 +4,6 @@ import {
   PolarAngleAxis,
   Radar,
   PolarRadiusAxis,
-  LabelList,
 } from "recharts";
 import styled from "styled-components";
 
