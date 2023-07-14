@@ -30,7 +30,7 @@ export const registerEmployment = async (params: Params) => {
 
 export const getEmployment = async () => {
   try {
-    const { data } = await axios.get(`${BASE_URL}/positions`);
+    const { data } = await axios.get(`${BASE_URL}/job-postings`);
     return data;
   } catch (e) {
     alert(e);

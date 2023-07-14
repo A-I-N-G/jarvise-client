@@ -22,39 +22,34 @@ const ContentBox = styled.div`
 `;
 
 interface Employment {
-  id: number;
-  title: string;
-  keyword: string[];
-  intro: string;
+  companPositionId: number;
+  name: string;
+  keywordList: string[];
+  introduction: string;
 }
 
 const Hire = () => {
-  const [employments, setEmployments] = useState<Employment[]>([
-    {
-      id: 1,
-      title: "직무명",
-      keyword: ["키워드1", "키워드2"],
-      intro: "직무소개",
-    },
-  ]);
+  const [employments, setEmployments] = useState<Employment[]>([]);
 
   useEffect(() => {
-    // getEmployment().then((res) => {
-    //   console.log(res);
-    // });
+    getEmployment().then((res) => {
+      setEmployments(res);
+    });
   }, []);
 
   return (
     <Wrapper>
       <ContentBox>
-        {employments.map(({ id, title, keyword, intro }) => (
-          <HireCard
-            id={id}
-            title={title}
-            keyword={keyword.join(", ")}
-            intro={intro}
-          />
-        ))}
+        {employments.map(
+          ({ companPositionId, name, keywordList, introduction }) => (
+            <HireCard
+              id={companPositionId}
+              title={name}
+              keyword={keywordList.join(", ")}
+              intro={introduction}
+            />
+          )
+        )}
       </ContentBox>
     </Wrapper>
   );

@@ -55,7 +55,6 @@ const Resume = () => {
         else setSelectedIdx((prev) => prev - 1);
         break;
       case "next":
-        console.log(questions);
         if (mock.length === selectedIdx + 1) alert("제출 완료");
         else setSelectedIdx((prev) => prev + 1);
         break;
