@@ -86,7 +86,7 @@ interface ResumeBoxProps {
   totalCnt: number;
   selectedIdx: number;
   onClick: (e: MouseEvent<HTMLButtonElement>) => void;
-  setQuestions: Dispatch<SetStateAction<Question[]>>;
+  setQuestions: Dispatch<SetStateAction<Question[] | undefined>>;
 }
 
 const ResumeBox = ({
@@ -103,6 +103,7 @@ const ResumeBox = ({
       target: { value },
     } = e;
     setQuestions((prev) => {
+      if (!prev) return;
       const newList = [...prev];
       newList[id - 1].value = value;
       return newList;

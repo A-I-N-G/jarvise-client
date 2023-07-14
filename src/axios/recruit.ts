@@ -18,6 +18,10 @@ interface Params {
   itemList?: string[];
 }
 
+interface ItemParams {
+  companyPositionId: number;
+}
+
 export const BASE_URL = "http://localhost:8080";
 
 export const registerEmployment = async (params: Params) => {
@@ -31,6 +35,17 @@ export const registerEmployment = async (params: Params) => {
 export const getEmployment = async () => {
   try {
     const { data } = await axios.get(`${BASE_URL}/job-postings`);
+    return data;
+  } catch (e) {
+    alert(e);
+  }
+};
+
+export const getItems = async (params: ItemParams) => {
+  try {
+    const { data } = await axios.get(
+      `${BASE_URL}/items/company/${params.companyPositionId}`
+    );
     return data;
   } catch (e) {
     alert(e);

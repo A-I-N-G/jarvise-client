@@ -11,9 +11,11 @@ const Router = () => {
       <Route path="/" element={<Main />} />
       <Route path="/hire" element={<Hire />} />
       <Route path="/resume" element={<Resume />}>
-        <Route path=":id" element={<Resume />} />
+        <Route path=":companyPositionId" element={<Resume />} />
       </Route>
-      <Route path="/result" element={<Result />} />
+      <Route path="/result" element={<Result />}>
+        <Route path=":companyPositionId" element={<Result />} />
+      </Route>
       <Route path="/register" element={<Register />} />
     </Routes>
   );
