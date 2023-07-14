@@ -5,6 +5,8 @@ import KeyWordResult from "../components/KeyWordResult";
 import PersonalityResult from "../components/PersonalityResult";
 import QuestionResult from "../components/QuestionResult";
 import ETCResult from "../components/ETCResult";
+import { useState, useEffect } from "react";
+import Loading from "../components/Loading";
 
 const ContentBox = styled.div`
   position: relative;
@@ -33,19 +35,31 @@ const ContentDiv = styled.div`
 `;
 
 const Result = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
+
   return (
     <Wrapper>
-      <ContentBox>
-        <ContentDiv>
-          <GraphResult />
-          <KeyWordResult />
-        </ContentDiv>
-        <ContentDiv>
-          <PersonalityResult />
-          <QuestionResult />
-          <ETCResult />
-        </ContentDiv>
-      </ContentBox>
+      {isLoading ? (
+        <Loading />
+      ) : (
+        <ContentBox>
+          <ContentDiv>
+            <GraphResult />
+            <KeyWordResult />
+          </ContentDiv>
+          <ContentDiv>
+            <PersonalityResult />
+            <QuestionResult />
+            <ETCResult />
+          </ContentDiv>
+        </ContentBox>
+      )}
     </Wrapper>
   );
 };
