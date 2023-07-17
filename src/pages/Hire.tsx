@@ -3,6 +3,7 @@ import Wrapper from "../components/Wrapper";
 import HireCard from "../components/HireCard";
 import { useState, useEffect } from "react";
 import { getEmployment } from "../axios/recruit";
+import { Link } from "react-router-dom";
 
 const ContentBox = styled.div`
   display: flex;
@@ -19,6 +20,23 @@ const ContentBox = styled.div`
   &::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera*/
   }
+`;
+
+const CenterBox = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
+const StyledLink = styled(Link)`
+  padding: 10px 20px;
+  text-decoration: none;
+  background-color: #0acf97;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
 `;
 
 interface Employment {
@@ -40,15 +58,21 @@ const Hire = () => {
   return (
     <Wrapper>
       <ContentBox>
-        {employments.map(
-          ({ companPositionId, name, keywordList, introduction }) => (
-            <HireCard
-              id={companPositionId}
-              title={name}
-              keyword={keywordList.join(", ")}
-              intro={introduction}
-            />
+        {employments.length ? (
+          employments.map(
+            ({ companPositionId, name, keywordList, introduction }) => (
+              <HireCard
+                id={companPositionId}
+                title={name}
+                keyword={keywordList.join(", ")}
+                intro={introduction}
+              />
+            )
           )
+        ) : (
+          <CenterBox>
+            <StyledLink to="/register">채용 공고 등록하기</StyledLink>
+          </CenterBox>
         )}
       </ContentBox>
     </Wrapper>
