@@ -7,8 +7,8 @@ const ContentDiv = styled.div`
   border-radius: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  padding: 30px 50px;
+  justify-content: space-evenly;
+  padding: 40px 50px;
   box-sizing: border-box;
   overflow: scroll;
   -ms-overflow-style: none; /* IE and Edge */
@@ -23,28 +23,28 @@ const ContentBox = styled.div`
   flex-direction: column;
   width: 100%;
   justify-content: space-between;
-  margin-bottom: 30px;
+  --margin-bottom: 30px;
 `;
 
 const Title = styled.div`
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   font-size: 18px;
 `;
 
 const ContentStrength = styled.div`
   text-align: center;
   font-weight: 600;
-  font-size: 24px;
-  width: 85%;
+  font-size: 40px;
+  -- width: 85%;
   color: #8b93f7;
 `;
 
 const ContentPosition = styled.div`
   text-align: center;
   font-weight: 600;
-  font-size: 24px;
-  width: 85%;
+  font-size: 40px;
+  -- width: 85%;
   color: #fa6986;
 `;
 

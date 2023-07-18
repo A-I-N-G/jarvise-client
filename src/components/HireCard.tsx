@@ -65,7 +65,7 @@ const Card = ({ id, title, keyword, intro }: CardProps) => {
   const navigate = useNavigate();
 
   const getShortStr = (content: string) =>
-    content.length > 150 ? `${content.slice(0, 150)}...` : content;
+    content?.length > 150 ? `${content.slice(0, 150)}...` : content;
 
   const onClick = () => {
     navigate(`/resume/${id}`);

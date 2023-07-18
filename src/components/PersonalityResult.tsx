@@ -5,7 +5,7 @@ const ContentDiv = styled.div`
   height: 100%;
   background-color: #fff;
   border-radius: 30px;
-  padding: 30px 50px;
+  padding: 50px 50px;
   box-sizing: border-box;
   overflow: scroll;
   -ms-overflow-style: none; /* IE and Edge */
@@ -33,12 +33,14 @@ const ContentStrength = styled.div`
   font-weight: 600;
   width: 100%;
   color: #8b93f7;
+  font-size: 20px;
 `;
 
 const ContentWeakness = styled.div`
   font-weight: 600;
   width: 100%;
   color: #fa6986;
+  font-size: 20px;
 `;
 
 const PersonalityResult = () => {

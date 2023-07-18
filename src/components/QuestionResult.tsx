@@ -5,7 +5,7 @@ const ContentDiv = styled.div`
   height: 100%;
   background-color: #fff;
   border-radius: 30px;
-  padding: 30px 50px;
+  padding: 40px 40px;
   box-sizing: border-box;
   overflow: scroll;
   -ms-overflow-style: none; /* IE and Edge */
@@ -26,7 +26,7 @@ const ContentBox = styled.div`
 const Title = styled.div`
   width: 100%;
   margin-bottom: 10px;
-  font-size: 14px;
+  font-size: 18px;
   color: #f1b618;
 `;
 
