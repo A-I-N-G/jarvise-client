@@ -35,15 +35,16 @@ const Title = styled.div`
 const ContentStrength = styled.div`
   text-align: center;
   font-weight: 600;
-  font-size: 40px;
+  font-size: 30px;
   -- width: 85%;
   color: #8b93f7;
+  margin-bottom: 20px;
 `;
 
 const ContentPosition = styled.div`
   text-align: center;
   font-weight: 600;
-  font-size: 40px;
+  font-size: 30px;
   -- width: 85%;
   color: #fa6986;
 `;
