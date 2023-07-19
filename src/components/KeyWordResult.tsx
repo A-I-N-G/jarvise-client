@@ -28,6 +28,8 @@ const Title = styled.div`
   font-weight: 600;
   font-size: 18px;
   color: #0acf97;
+  // color: #fa6180;
+  text-shadow: 1px 1px 1px lightgray;
 `;
 
 const Content = styled.div`
