@@ -28,8 +28,10 @@ const ContentBox = styled.div`
 
 const Title = styled.div`
   width: 100%;
-  margin-bottom: 30px;
+  margin-bottom: 15px;
   font-size: 18px;
+  font-weight: bold;
+  text-shadow: 1px 1px 1px lightgray;
 `;
 
 const ContentStrength = styled.div`
@@ -37,7 +39,7 @@ const ContentStrength = styled.div`
   font-weight: 600;
   font-size: 30px;
   -- width: 85%;
-  color: #8b93f7;
+  color: #7c82d9;
   margin-bottom: 20px;
 `;
 
@@ -53,11 +55,11 @@ const ETCResult = () => {
   return (
     <ContentDiv>
       <ContentBox>
-        <Title>적합도</Title>
+        <Title>🔍 적합도</Title>
         <ContentStrength>72%</ContentStrength>
       </ContentBox>
       <ContentBox>
-        <Title>포지션 추천</Title>
+        <Title>📌 포지션 추천</Title>
         <ContentPosition>프론트엔드 개발</ContentPosition>
       </ContentBox>
     </ContentDiv>
