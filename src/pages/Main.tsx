@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 // import ImageSrc from '../../public/images/MainImage.jpg';
 
@@ -29,19 +30,30 @@ const Contents = styled.div`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border: 1px solid white;
   z-index: 20;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  color: white;
+  font-size: 36px;
+  font-weight: 600;
 `;
 
 const Content = styled.div`
   width: 40%;
-  border: 1px solid white;
-  font-size: 36px;
-  font-weight: 600;
   color: white;
+  margin-bottom: 40px;
+`;
+
+const StyledLink = styled(Link)`
+  padding: 15px 30px;
+  text-decoration: none;
+  background-color: #0acf97;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
 `;
 
 const Main = () => {
@@ -49,10 +61,10 @@ const Main = () => {
     <Wrapper>
       <DimmedLayer />
       <MainImage src="images/MainPage.png" />
-      {/* <Contents>
-        <Content>aa</Content>
-        <Content>bb</Content>
-      </Contents> */}
+      <Contents>
+        <Content>AI 기반 자기소개서 분석 서비스</Content>
+        <StyledLink to="/hire">시작하기</StyledLink>
+      </Contents>
     </Wrapper>
   );
 };

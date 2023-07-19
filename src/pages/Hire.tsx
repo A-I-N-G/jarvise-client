@@ -30,7 +30,7 @@ const CenterBox = styled.div`
 `;
 
 const StyledLink = styled(Link)`
-  padding: 10px 20px;
+  padding: 15px 30px;
   text-decoration: none;
   background-color: #0acf97;
   border-radius: 10px;
