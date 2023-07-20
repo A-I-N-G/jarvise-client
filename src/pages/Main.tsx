@@ -41,7 +41,7 @@ const Contents = styled.div`
 `;
 
 const Content = styled.div`
-  width: 40%;
+  --width: 40%;
   color: white;
   margin-bottom: 40px;
 `;
