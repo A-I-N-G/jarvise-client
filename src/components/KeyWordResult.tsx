@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { CorrectYNObj } from "../pages/Result";
 
 const ContentDiv = styled.div`
-  width: 66%;
+  width: 100%;
   height: 100%;
   background-color: #fff;
   border-radius: 30px;
@@ -25,15 +25,19 @@ const ContentBox = styled.div`
 `;
 
 const Title = styled.div`
-  width: 20%;
+  width: 15%;
   font-weight: 600;
   font-size: 18px;
   color: #0acf97;
   text-shadow: 1px 1px 1px lightgray;
 `;
 
+const YN = styled.div`
+  width: 5%;
+`;
+
 const Content = styled.div`
-  width: 80%;
+  width: 70%;
 `;
 
 interface KeywordResultProps {
@@ -47,6 +51,7 @@ const KeyWordResult = ({ correctYN }: KeywordResultProps) => {
         return (
           <ContentBox>
             <Title>{keyword}</Title>
+            <YN>{yn === "Y" ? "O" : "X"}</YN>
             <Content>{content}</Content>
           </ContentBox>
         );

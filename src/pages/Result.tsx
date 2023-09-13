@@ -235,7 +235,7 @@ const Result = () => {
       ) : (
         <ContentBox>
           <ContentDiv>
-            <CorrectYN correctYN={correctYN} />
+            {/* <CorrectYN correctYN={correctYN} /> */}
             <KeyWordResult correctYN={correctYN} />
           </ContentDiv>
           <ContentDiv>
