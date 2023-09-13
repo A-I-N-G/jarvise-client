@@ -37,7 +37,7 @@ const YN = styled.div`
 `;
 
 const Content = styled.div`
-  width: 70%;
+  width: 80%;
 `;
 
 interface KeywordResultProps {
@@ -50,8 +50,7 @@ const KeyWordResult = ({ correctYN }: KeywordResultProps) => {
       {correctYN.map(({ keyword, yn, content }) => {
         return (
           <ContentBox>
-            <Title>{keyword}</Title>
-            <YN>{yn === "Y" ? "O" : "X"}</YN>
+            <Title>{`${keyword} (${yn === "Y" ? "⭕" : "❌"})`}</Title>
             <Content>{content}</Content>
           </ContentBox>
         );
