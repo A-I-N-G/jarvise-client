@@ -10,6 +10,13 @@ import { useLocation } from "react-router-dom";
 import Loading from "../components/Loading";
 import { getCorrectYN } from "../axios/gpt";
 import { CreateChatCompletionRequestMessage } from "openai/resources/chat";
+import CorrectYN from "../components/CorrectYN";
+
+export interface CorrectYNObj {
+  keyword: string;
+  yn: string;
+  content: string;
+}
 
 const ContentBox = styled.div`
   position: relative;
@@ -170,6 +177,7 @@ const Result = () => {
 
   const [isLoading, setIsLoading] = useState(true);
   const [correctYNPrompt, setCorrectYNPrompt] = useState(initCorrectYNPrompt);
+  const [correctYN, setCorrectYN] = useState<CorrectYNObj[]>([]);
 
   useEffect(() => {
     if (!location.state.content) {
@@ -211,10 +219,12 @@ const Result = () => {
       },
     };
     const splited = result.choices[0].message.content.split("\\");
+    const temp: CorrectYNObj[] = [];
     splited.forEach((res) => {
-      const [key, yn, value] = res.split("/");
-      console.log(key, yn, value);
+      const [keyword, yn, content] = res.split("/");
+      temp.push({ keyword, yn, content });
     });
+    setCorrectYN(temp);
     setIsLoading(false);
   };
 
@@ -225,8 +235,8 @@ const Result = () => {
       ) : (
         <ContentBox>
           <ContentDiv>
-            <GraphResult />
-            <KeyWordResult />
+            <CorrectYN correctYN={correctYN} />
+            <KeyWordResult correctYN={correctYN} />
           </ContentDiv>
           <ContentDiv>
             <PersonalityResult />
