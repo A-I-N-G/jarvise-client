@@ -18,13 +18,21 @@ const Resume = () => {
   const [selectedIdx, setSelectedIdx] = useState(0);
 
   useEffect(() => {
-    if (!companyPositionId) return;
-    getItems({ companyPositionId: Number(companyPositionId) }).then((res) => {
-      res.forEach((lst: Question) => {
-        lst["value"] = "";
-      });
-      setQuestions(res);
-    });
+    // if (!companyPositionId) return;
+    // getItems({ companyPositionId: Number(companyPositionId) }).then((res) => {
+    //   res.forEach((lst: Question) => {
+    //     lst["value"] = "";
+    //   });
+    //   setQuestions(res);
+    // });
+    const res = [
+      {
+        content: "자기소개서를 작성해주세요.",
+        id: 1,
+        value: "",
+      },
+    ];
+    setQuestions(res);
   }, [companyPositionId]);
 
   const onClick = (e: MouseEvent<HTMLButtonElement>) => {
@@ -39,7 +47,7 @@ const Resume = () => {
       case "next":
         if (questions?.length === selectedIdx + 1) {
           alert("제출 완료");
-          navigate(`/result/${companyPositionId}`);
+          navigate(`/result`, { state: { content: questions[0].value } });
         } else setSelectedIdx((prev) => prev + 1);
         break;
     }
