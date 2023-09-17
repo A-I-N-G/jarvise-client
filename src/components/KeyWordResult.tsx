@@ -49,7 +49,7 @@ const KeyWordResult = ({ correctYN }: KeywordResultProps) => {
     <ContentDiv>
       {correctYN.map(({ keyword, yn, content }) => {
         return (
-          <ContentBox>
+          <ContentBox key={keyword}>
             <Title>{`${keyword} (${yn === "Y" ? "⭕" : "❌"})`}</Title>
             <Content>{content}</Content>
           </ContentBox>
