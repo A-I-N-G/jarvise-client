@@ -3,7 +3,7 @@ import OpenAI from "openai";
 import { CreateChatCompletionRequestMessage } from "openai/resources/chat";
 
 const BASE_URL = "https://api.openai.com/v1/chat/completions";
-const API_KEY = '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';
+const API_KEY = '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';
 
 const openai = new OpenAI({
   apiKey: API_KEY,
@@ -78,6 +78,37 @@ const strengthNWeaknessPrompt: CreateChatCompletionRequestMessage[] = [
   "content": "장점: 전공 변화, 자기 주도적 학습, 삼성 청년 SW 아카데미, 열정, 목표 달성 능력 \\ 단점: 전공 미일치, 퇴사, 경험 부족"
 }]
 
+const QuestionPrompt: CreateChatCompletionRequestMessage[] = [
+  {
+    "role": "system",
+    "content": "너는 채용담당자야. 회사에 지원한 지원자의 자기소개서를 입력하면 너는 그 자기소개서를 보고 지원자에게 면접 때 질문할 내용을 3개만 뽑아줘. 질문에 번호를 매겨서 써줘. 반드시 이 형태를 지켜서 답해줘. 설명을 덧붙이지 말고 질문만 3개 만들어줘. 앞으로 내가 입력할 모든 내용은 자기소개서 답변들이야. 설명을 덧붙이지 말고 질문 딱 3개만 만들어줘."
+  },
+  {
+    "role": "user",
+    "content": "[기우제는 언제나 성공한다]\n\n목표달성을 위하여 열정적으로 학업에 매달린 경험이 있습니다. 전공 공부에 집중하는 것이 우선적으로 중요하다는 것을 깨달은 저는 우선 학과 수석이었던 친구에게 조언을 구했습니다. 그 친구는 아리조나 사막 인디언들의 이야기를 들려주었습니다. 인디언들의 기우제는 항상 성공한다고 합니다. 왜냐하면, 비가 올 때까지 기우제를 지내기 때문입니다. 특별한 공부법이라기보다 '될 때까지 한다'는 뚜렷한 목표의식의 중요성을 배웠습니다. 따라서 '목표'를 정하는 것부터 시작했습니다. 저는 당시 남은 4학기 동안 '성적 장학금'을 받는 것을 목표로 설정했습니다.\n혼자 공부하는 것이 익숙했던 저에게 한계가 느껴졌습니다. 그래서 친구들과 정기적인 스터디를 하기 시작했습니다. 선의의 경쟁 속에서 쉽게 다른 유혹들을 뿌리칠 수 있었고 서로를 독려했습니다. 결과적으로 18년도 2학기와 19년도 1학기에는 성적 장학금을 받을 수 있었습니다. 19년도 2학기에는 아쉽게도 장학금은 놓쳤지만 세 학기 연속 4.0 이상이라는 소기의 목적을 달성할 수 있었습니다. 뚜렷한 목표의식과 협동심은 곧 열정으로 이어지며 이는 결과로 보상받는다는 것을 깨달을 수 있었습니다."
+  },
+  {
+    "role": "assistant",
+    "content": "1. 이 경험에서 어떤 목표를 설정하고 그 목표를 달성하기 위해 어떤 계획을 세우셨나요?\n2. 친구들과의 정기적인 스터디에서 경험한 협동심과 경쟁의 역할에 대해 더 자세히 설명해주실 수 있을까요?\n3. 성적 장학금을 받기 위한 노력 중에서 가장 도전적이었던 부분은 무엇이었나요?\n"
+  },
+  {
+    "role": "user",
+    "content": "[끊임없이 역량을 강화하는 개발자]\n\n개발 역량을 강화하고 도태되지 않는 개발자로 성장하기 위해 다음과 같은 경험을 쌓았습니다. 첫째, 4번의 웹 개발 프로젝트에 참여했습니다. 막학기의 종합 설계 과목에서 HTML, CSS, Javascript를 이용한 프론트엔드 개발을 진행하였고, 웹개발자 양성과정에 참여하여 Mybatis, Oracle, Git, JSP 등의 기술을 익히며 2회의 프로젝트를 진행했습니다. 또한, 인턴으로 근무하며 Typescript기반의 React, MSA기반의 Spring Boot를 활용한 사이드 프로젝트에 풀스택 개발자로 참여하며 실무경험까지 두루 갖출 수 있었습니다. 이러한 경험을 바탕으로 개발 역량을 꾸준히 향상해왔습니다.\n또한, IT산업은 어떤 산업 분야보다 변화의 폭이 넓기에 '끊임없는 학습'이 필요하다는 것을 인지하고 이에 대처할 수 있는 역량을 갖추고자 했습니다. '정보처리기사'를 취득하여 네트워크, 컴퓨터과학 등에 대한 지식을 쌓았습니다. 또한, 자료구조와 알고리즘을 공부하기 위해  스터디를 적극적으로 활용했습니다. 스터디원들과 코드 리뷰를 통해 효율적인 코드를 작성하고자 지속적으로 노력하고 있습니다."
+  },
+  {
+    "role": "assistant",
+    "content": "1. 웹 개발 프로젝트와 풀스택 개발자로의 인턴 경험을 통해 어떤 기술 스택과 도구를 주로 사용하였고, 이를 어떻게 활용하여 프로젝트를 진행하셨나요?\n2. '끊임없는 학습'을 강조하고 계신데, 자료구조와 알고리즘 스터디를 통해 어떤 구체적인 역량을 향상시켰으며, 이를 어떻게 실제 개발 프로젝트에 적용하고 있나요?\n3. 정보처리기사 취득과 학습을 통해 얻은 지식을 현재 진행 중인 개발 프로젝트나 업무에 어떻게 활용하고 있는지 설명해주실 수 있을까요?"
+  },
+  {
+    "role": "user",
+    "content": "[팀원들을 설득하는 방법]\n\n프로젝트 진행 중이던 팀에서는 한 가지 문제가 있었습니다. 개발 branch와 운영 branch가 동일한 master branch를 바라보고 있다는 것이었습니다. 이 때문에 운영 서버에 충분히 테스트를 거치지 않은 코드가 반영되거나, 운영 환경과 개발 환경이 달라 오류가 나는 등의 문제가 발생했습니다.\n이를 해결하기 위한 다양한 의견이 나왔지만 대부분의 의견은 다른 부작용을 동반했습니다. 저는 문득 Git-Flow'를 떠올렸고 이에 대한 세미나를 진행하게 되었습니다. Git-Flow를 적용하는 방법론과 실제로 개발과 운영을 분리하여 commit을 만들고, 예상되는 충돌을 발생시켜 해결하는 방법, master브랜치에는 cherry-pick으로 원하는 commit만을 반영시키는 방법 등 충분한 예시를 들어 이에 관해 프레젠테이션을 준비했습니다.\n이를 통해 개발자와 PM 모두에게 동의를 받을 수 있었고 이것이 채택되어 branch 관리 전략으로 사용될 수 있었습니다. 이후 branch 전략으로 인한 운영 상의 문제는 사라지게 되었고, 저는 근거와 예시를 통해 상대방을 설득하는 방법을 배울 수 있었습니다."
+  },
+  {
+    "role": "assistant",
+    "content": "1. Git-Flow를 도입하기 위한 프레젠테이션을 어떻게 준비하였으며, 설득 과정에서 주로 어떤 내용을 강조하셨나요?\n2. 팀 내에서 발생한 문제에 대한 다양한 의견이 있을 때, 왜 Git-Flow를 선택했고 이 방법론을 팀원들에게 설득하는 데 어떤 어려움을 겪었나요?\n3. Git-Flow의 채택 이후에 어떤 성과를 얻었으며, 이를 통해 팀 내 협업이나 프로젝트의 품질에 어떤 변화가 있었나요?"
+  },  
+]
+
 export const getCorrectYN = async (
   message: CreateChatCompletionRequestMessage
 ) => {
@@ -104,6 +135,20 @@ export const getStrengthNWeakness = async (message: CreateChatCompletionRequestM
     top_p: 1,
     frequency_penalty: 0,
     presence_penalty: 0,
-})
-return response
+  })
+  return response
+}
+
+export const getQuestion = async (message: CreateChatCompletionRequestMessage) => {
+  const messages = [...QuestionPrompt, message]
+  const response = await openai.chat.completions.create({
+    model: "gpt-3.5-turbo",
+    messages,
+    temperature: 1,
+    max_tokens: 256,
+    top_p: 1,
+    frequency_penalty: 0,
+    presence_penalty: 0,
+  })
+  return response
 }
